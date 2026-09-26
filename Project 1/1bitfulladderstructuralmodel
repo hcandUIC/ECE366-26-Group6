@@ -1,0 +1,11 @@
+module one_bit_full_adder (A, B, Cin, S, Cout);
+	input A, B, Cin;
+    output S, Cout; wire temp1, temp2, temp3;
+
+    xor (S, A, B, Cin); 
+
+  and (temp1, A, B);
+  and (temp2, B, Cin);
+  and (temp3, Cin, A);
+  or  (Cout, temp1, temp2, temp3);
+endmodule
