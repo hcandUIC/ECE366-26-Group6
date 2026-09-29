@@ -1,0 +1,9 @@
+module one_bit_full_adder (A, B, Cin, S, Cout);
+  input A,B, Cin, //inputs are A, B, and Cin
+  output reg S, Cout; // outputs to registers are S and Cout;
+  
+  always @(*) begin //The (*) is used to automatically put in inputs and outputs.
+    S = A ^ B ^ Cin; // "^" is xor
+    Cout = (A & B) | (B & Cin) | (Cin & A); //& in bits, | or the results
+  end
+endmodule
