@@ -3,13 +3,13 @@ module tb_loop_subtractor;
     reg Cin;
     wire [3:0] S;
     wire Cout;
-    
+
     integer i, j;
 
     four_bit_RCA_RCS uut (A, B, Cin, S, Cout);
 
     initial begin
-        $dumpfile("dump.vcd"); $dumpvars(1, tb_loop_adder);
+      $dumpfile("dump.vcd"); $dumpvars(1, tb_loop_subtractor);
 
         Cin = 1;
         for (i = 0; i < 16; i = i + 1) begin
