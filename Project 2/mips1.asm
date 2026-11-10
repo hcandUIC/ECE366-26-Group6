@@ -15,9 +15,9 @@ main:
     li $t1, 1           # b
     li $t2, 10          # n
 fib_loop:
-    # Print the current Fibonacci number ($t0)
+    # Print t0
     li $v0, 1           # Syscall code 1: Print integer
-    move $a0, $t0       # Move F(n-2) into $a0 for printing
+    move $a0, $t0       # Move a into $a0 to print
     syscall
 
 
