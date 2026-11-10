@@ -20,4 +20,9 @@ fib_loop:
     move $a0, $t0       # Move a into $a0 to print
     syscall
 
+    # Print t1
+    li $v0, 1
+    move $a1, $t1
+    syscall
+    
 
