@@ -1,6 +1,6 @@
 .data
     msg:   .asciiz "Fibonacci Sequence: "
-
+    space: .asciiz " "
 .text
 .globl main
 
@@ -21,8 +21,10 @@ fib_loop:
     syscall
 
     # Print space
-    li $v0, 1
+    li $v0, 4
     la $a0, space
     syscall
+    
+    add $t3, $t0, $t1
     
 
