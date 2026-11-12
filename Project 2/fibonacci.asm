@@ -1,18 +1,13 @@
-
+.data
+    n:      .word 7      # n is here
+    result: .word 0      # The result will be stored here
+.text
 
 fibonacci:
 	#handle intake of n value
-	ori $v0, $zero, 5 	#value register 0 is or of zero and 5 (load code 5 into v0)
-	syscall 		#looks into v0 for service code and execute (code 5 awaits integer input)
-	
-	addi $sp, $sp, -4	#move stack pointer by 4 bytes for a clean slot
-	
-	sw $v0, 0($sp)		#input int stored to memory pointer location with no offset
-	
-	#load stored in into register for use
-	lw $t0, 0($sp)		#load word from address at stack pointer address with 0 offset into temp 2 for use
-
-	
+	la $t8, n           # Load the memory address of 'n'
+	lw $t0, 0($t8)      # Load the value of 'n' into $t0
+#changed to work with .data	
 	#handle check of n value
 	ori  $t2, $zero, 2 	#temp 2 is or of 0 and 2 (store 2 into t2)
 
@@ -31,23 +26,20 @@ fibonacci:
 		bne $t0, $zero fib_loop #if t0 is greater than 0 go to fib_loop (loop if n > 0)
 
 	#handle return of final value b and closing of function, exit without return call for testing purposes
-	addu $v1, $t2, $zero	#final return value of t2,b moved to value register 1
-	addi $sp, $sp, -4	#move stack pointer by 4 bytes for a clean slot
-	sw $t2, 0($sp)		#save word into stack
+	la $t9, result       # Load the memory address of 'result'
+    	sw $t2, 0($t9)       # Store final answer into memory
 
-	addu $v0, $zero, 10	#value reg 0 is addition of zero and 10 (load code 10 into return reg 0)
-	syscall			#look into v0 for service call (code 10 ends program)
-
-
+    	addu $v0, $zero, 10
+    	syscall
+#changed due to data being saved incorrectly 
 #base case check of n, return and exit function if n <= 1
 invalid_n:
-	addu $v1, $t0, $zero 	#value register 1 is addition of temp 0 and zero (return value of t0)
-	
-	#ends function without return to call for testing purposes
-	addu $v0, $zero, 10 	#value reg 0 is addition of zero and 10 (load code 10 into return reg 0)
-	syscall 		#look into v0 for service call (code 10 ends program)
-	
-	
+    la $t9, result
+    sw $t0, 0($t9)       # Store 'n' itself (from $t0) into memory
+    
+    addu $v0, $zero, 10  # Load exit code 10 into $v0
+    syscall
+#changed due to wrong register and missing exit	
 #Loop
 fib_loop:
 	addu $t3, $t2, $zero 	#hold tempt 2 in temp 3
