@@ -11,6 +11,4 @@ Edwin Baeza:
 Ethan Rodriguez: 
 
 GitHub Link:
-
-
-we can run the MIPS program to get the nth Fibonacci number for a given n.
+https://github.com/hcandUIC/ECE366-26-Group6/tree/155785188babfe0151783d0d2281421a28708465/Project%202
