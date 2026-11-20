@@ -1,24 +1,24 @@
+.data
+	n: .word 7
+	result: .word 0
+	
+.text
+.globl main
+.globl is_fibonacci_odd
 
-
-.global is_fibonocci_odd
-
-
-prompt for inout
-
-
-take data in
-
-
-load mem address of value into argument reg
-
-jump to fibs
-
-load return into argument reg
-
-jump to is odd
-
-load return into temp reg
-
-load value into memory
-
-output reault
+main:
+is_fibonacci_odd:
+	la $t8, n
+	lw $a0, 0($t8)
+	
+	jal fibonacci
+	
+	addu $a0, $v0, $zero
+	
+	jal is_odd
+	
+	la $t9, result
+	sw $v0, 0($t9)
+	
+	addu $v0, $zero, 10
+	syscall
