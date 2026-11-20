@@ -2,28 +2,28 @@
 	
 IsOdd:
 	# ======= Load argument value from memory =========
-
+	ori $s0 $zero, $ra	# save current return address into s0
+	
 	or $sp, $zero, $a0	# Move stack pointer to memory address of a0
 	lw $a0, 0($sp)		# a0 becomes value stored in address instead of address
 	# ====== end of load=====
 	
 	# --- Remainder calculation and assaignment ---
-	jal division		# jump to division function for calculation set return address
+	jal division		# jump to division function for calculation, then set return address register 
 	or $t0, $zero, $v1	# remainder variable R = return value of division
 	
 	bne $t0, $zero, true	# if R != 0 , go to true
 	beq $t0, $zero,  false	# if R = 0, go to false
 	
-	#
+	# --- Even or Odd Check  ---
+	ori $ra, $zero, $s1	# Set Return Addres register back to original address to return to main caller
 	
-	# --- Remainder Check ---
 	false: 
-		ori $v1, $zero, 0	# set return value to 0 for false, m is even
-		
+		ori $v0, $zero, 0	# set return value to 0 for false, m is even
 		jr $ra			# jump back to caller
-	true:
-		ori $v1, $zero, 1	# set return value to 1 for true, m is odd
 		
+	true:
+		ori $v0, $zero, 1	# set return value to 1 for true, m is odd
 		jr $ra			# jump back to caller
 	# ====== End of main code ======
 
