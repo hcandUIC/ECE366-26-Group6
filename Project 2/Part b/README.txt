@@ -24,11 +24,12 @@ https://github.com/hcandUIC/ECE366-26-Group6/tree/155785188babfe0151783d0d228142
 (1)	Extract files from the TAR file
 (2)	Open MARS program
 (3)	In MARS: Go to File then Open
-(4)	Navigate to "G6_Report2" folder then select and open "is_odd.asm"
-(5)	Enter a value for m at line 2 that is marked with comment "# m is here", replace the existing number if one is there
-(6)	Go to "File" then "Save"
-(6)	Go "Run" then "Assemble", Once the operation is complete click the green arrow at the top
-(7)	The output value will be found in Register "$t0" on the rightside in the register pane
+(4)	Navigate to "G6_Final" folder then select and open "isFibonacciOdd.asm"
+(5)	Ensure these two options are selected in the settings of mars "Assemble all files in directory" and "initialize program counter to global 'main'if defined 
+(6)	Go to "Run" then "Assemble" and hit the green arrow at the top
+(6)	In the Mars Messages box at the bottom you will be prompted to inpu a value to check. Enter the value hit enter
+(7)	A message will print in Mars Messages box once evaluation is complete
+()	The value will also be found in the $s0 register in the right side pane
 (*)	1(true) means your value is odd : 0(false) Means your value is Even
 
 
